@@ -1,0 +1,25 @@
+.mainNavMenu {
+  margin-top: 5%;
+}
+
+.mainNavMenu {
+
+  &_instructions {
+    width: 50%;
+    margin:  0 auto;
+    padding-bottom: 2%;
+
+    &-instructionText {
+
+    }
+
+  }
+
+  &_pageNavButtons {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    margin: 0 auto;
+  }
+
+}

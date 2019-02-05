@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Remove default margin from body
+body, html {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
 // Angular Material Theme
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+// Font
+@import url('https://fonts.googleapis.com/css?family=Roboto|Sarabun');
+
+.titleFont{
+  font-family: 'Sarabun', sans-serif;
+
+}
+// This font is alo applied directly to body and html tags
+.bodyFont {
+  font-family: 'Roboto', sans-serif;
+}
