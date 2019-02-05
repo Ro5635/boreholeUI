@@ -1,0 +1,18 @@
+# Build and start a container for executing angular CLI commands in
+#
+
+
+version: "2"
+services:
+  node:
+    build: .
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+    - NODE_ENV=dev
+    volumes:
+    - ./:/home/node/app
+    ports:
+    - "8085:4200"
+    # Hold the container open when it is doing nothing, this is an anti-pattern, but useful for development.
+    tty: true
