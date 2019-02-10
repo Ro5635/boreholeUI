@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Borehole} from "../../Borehole";
+import {BoreholesService} from "../boreholes.service";
 
 @Component({
   selector: 'app-add-borehole',
@@ -9,8 +10,9 @@ import {Borehole} from "../../Borehole";
 export class AddBoreholeComponent implements OnInit {
   boreholeModel = new Borehole();
   currentBoreholeType: string;
+  tmpTestBoreholes: Borehole[];
 
-  constructor() {
+  constructor(private boreholesService: BoreholesService) {
   }
 
   ngOnInit() {
@@ -31,6 +33,10 @@ export class AddBoreholeComponent implements OnInit {
 
   saveBorehole() {
     console.log(this.boreholeModel);
+
+    this.boreholesService.getBoreholes()
+      .subscribe(acquiredBoreholes => this.tmpTestBoreholes = acquiredBoreholes);
+
   }
 
 }
