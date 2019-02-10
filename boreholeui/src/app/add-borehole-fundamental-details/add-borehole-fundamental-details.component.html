@@ -1,0 +1,60 @@
+<form [formGroup]="fundamentalDetails">
+
+
+  <p>
+    To save a new borehole please complete the below form
+  </p>
+
+  <mat-form-field>
+    <input matInput placeholder="Borehole ID" name="IDTextInput" formControlName="ID" required>
+  </mat-form-field>
+  <p *ngIf="fundamentalDetails.get('ID').invalid && fundamentalDetails.get('ID').touched">
+    Please enter a valid ID.
+  </p>
+  <br>
+
+  <mat-form-field>
+    <input matInput placeholder="Borehole Diameter" name="DiameterTextInput" formControlName="Diameter"
+           required>
+  </mat-form-field>
+
+  <p *ngIf="fundamentalDetails.get('Diameter').invalid && fundamentalDetails.get('Diameter').touched">
+    Please enter a valid positive diameter.
+  </p>
+
+  <br>
+
+  <mat-form-field>
+    <input matInput placeholder="Borehole Depth" name="DepthTextInput" formControlName="Depth" required>
+  </mat-form-field>
+  <p *ngIf="fundamentalDetails.get('Depth').invalid && fundamentalDetails.get('Depth').touched">
+    Please enter a valid positive depth.
+  </p>
+
+  <br>
+
+  <mat-divider></mat-divider>
+
+  <p class="addBorehole_stepStage-instruction">Please select the borehole sub type</p>
+
+  <mat-form-field>
+    <mat-select placeholder="Borehole Type" name="BoreholeTypeSelect" formControlName="Type">
+      <mat-option *ngFor="let boreholeType of boreholeTypes" [value]="boreholeType.name">
+        {{boreholeType.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="fundamentalDetails.invalid && fundamentalDetails.touched">
+    Please complete all of the above details
+
+  </div>
+
+
+</form>
+
+<div class="stepStage-navButtons">
+  <button type="button" mat-button matStepperNext (click)="emitFundamentalDetails()"
+          [disabled]="fundamentalDetails.invalid">Next
+  </button>
+</div>

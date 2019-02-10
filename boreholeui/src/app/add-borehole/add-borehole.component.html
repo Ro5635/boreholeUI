@@ -2,67 +2,31 @@
 
 
   <mat-horizontal-stepper [linear]="true">
-    <mat-step [stepControl]="firstFormGroupA">
-      <form [formGroup]="firstFormGroupA">
-        <p>
-          To save a new borehole please complete the below form
-        </p>
+    <mat-step [stepControl]="fundamentalDetailsStep">
 
-        <mat-form-field>
-          <input matInput placeholder="Borehole ID" name="IDTextInput" formControlName="IDTextInput" required>
-        </mat-form-field>
-
-        <br>
-
-        <mat-form-field>
-          <input matInput placeholder="Borehole Diameter" name="DiameterTextInput" formControlName="DiameterTextInput"
-                 required>
-        </mat-form-field>
-
-        <br>
-
-        <mat-form-field>
-          <input matInput placeholder="Borehole Depth" name="DepthTextInput" formControlName="DepthTextInput" required>
-        </mat-form-field>
-
-        <br>
-
-        <mat-divider></mat-divider>
-
-        <p class="addBorehole_stepStage-instruction">Please select the borehole sub type</p>
-
-        <mat-form-field>
-          <mat-select placeholder="Borehole Type"  name="BoreholeTypeSelect" formControlName="BoreholeTypeSelect">
-            <mat-option *ngFor="let boreholeType of boreholeTypes" [value]="boreholeType.name">
-              {{boreholeType.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-
-
-
-        <div class="addBorehole_stepStage-navButtons">
-          <button type="button" mat-button matStepperNext>Next</button>
-        </div>
-      </form>
+      <app-add-borehole-fundamental-details
+        (boreholeFundamentalDetails)="completeFundamentalDetails($event)"></app-add-borehole-fundamental-details>
     </mat-step>
 
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
+    <mat-step [stepControl]="TypeSpecificDetails">
+      <div [ngSwitch]="currentBoreholeType">
+        <app-add-borehole-rotarydrill-details *ngSwitchCase="'Rotarydrill'" (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-rotarydrill-details>
+        <app-add-borehole-cable-details *ngSwitchCase="'Cable'" (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-cable-details>
+        <div *ngSwitchDefault>No Borehole type selected</div>
 
-        <div>
-          <button type="button" mat-button matStepperPrevious>Back</button>
-          <button type="button" mat-button matStepperNext>Next</button>
-        </div>
-      </form>
+      </div>
+
     </mat-step>
 
 
     <mat-step>
       <ng-template matStepLabel>Save</ng-template>
-      You are now done.
-      <div>
+      Save Borehole?
+
+      <br>
+
+      <div class="addBorehole_stepStage-navButtons">
+        <button type="button" mat-button (click)="saveBorehole()">Save</button>
         <button type="button" mat-button matStepperPrevious>Back</button>
       </div>
     </mat-step>

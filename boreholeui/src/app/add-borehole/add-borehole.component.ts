@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Borehole} from "../../Borehole";
 
 @Component({
   selector: 'app-add-borehole',
@@ -7,25 +7,30 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./add-borehole.component.scss']
 })
 export class AddBoreholeComponent implements OnInit {
-  firstFormGroupA: FormGroup;
-  secondFormGroup: FormGroup;
+  boreholeModel = new Borehole();
+  currentBoreholeType: string;
 
-  boreholeTypes: any = [{name: "RotaryDrill", viewValue: "Rotary"}, {name: "Cable", viewValue: "Cable"}];
-
-  constructor(private _formBuilder: FormBuilder) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.firstFormGroupA = this._formBuilder.group({
-      IDTextInput: ['', Validators.required],
-      DiameterTextInput: ['', Validators.required],
-      DepthTextInput: ['', Validators.required],
-      BoreholeTypeSelect: ['', Validators.required]
-    });
+  }
 
-    this.secondFormGroup = this._formBuilder.group({
+  completeFundamentalDetails($fundamentalDetails: Borehole) {
+    // Update teh current borehole type to drive the switch case in the UI
+    this.currentBoreholeType = $fundamentalDetails.Type;
 
-    });
+    // Reset any content from the boreholeModel first in case the user backtracked
+    this.boreholeModel = new Borehole();
+    this.boreholeModel = Object.assign(this.boreholeModel, $fundamentalDetails);
+  }
+
+  completeTypeDetails($typeDetails: object) {
+    this.boreholeModel = Object.assign(this.boreholeModel, $typeDetails);
+  }
+
+  saveBorehole() {
+    console.log(this.boreholeModel);
   }
 
 }

@@ -1,0 +1,45 @@
+<h2>Cable Details</h2>
+<p>Please complete the additional details for the cable type borehole</p>
+
+<br>
+
+<form [formGroup]="typeDetails">
+
+  <div class="typeDetails_singleInput">
+    <label for="CableStrength">Cable Strength:</label>
+    <mat-slider
+      matInput
+      id="CableStrength"
+      formControlName="CableStrength"
+      name="CableStrength"
+      class="CableDetails_Slider"
+      thumbLabel
+      tickInterval="1"
+      min="1"
+      max="10"></mat-slider>
+  </div>
+
+
+  <div class="typeDetails_singleInput">
+    <mat-form-field>
+      <input matInput placeholder="CableLength" name="CableLength" formControlName="CableLength"
+             required>
+    </mat-form-field>
+  </div>
+
+  <div class="typeDetails_singleInput">
+    <mat-form-field>
+      <input matInput placeholder="CableDiameter" name="CableDiameter" formControlName="CableDiameter"
+             required>
+    </mat-form-field>
+  </div>
+
+</form>
+
+<div class="stepStage-navButtons">
+  <button type="button" mat-button matStepperPrevious>Back</button>
+  <button type="button" mat-button matStepperNext [disabled]="typeDetails.invalid" (click)="emitTypeDetails()">
+    Next
+  </button>
+
+</div>

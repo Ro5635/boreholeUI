@@ -11,19 +11,29 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavMenuComponent } from './main-nav-menu/main-nav-menu.component';
 import { AddBoreholeComponent } from './add-borehole/add-borehole.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AddBoreholeFundamentalDetailsComponent } from './add-borehole-fundamental-details/add-borehole-fundamental-details.component';
+import { AddBoreholeRotarydrillDetailsComponent } from './add-borehole-rotarydrill-details/add-borehole-rotarydrill-details.component';
+import { AddBoreholeCableDetailsComponent } from './add-borehole-cable-details/add-borehole-cable-details.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MainNavMenuComponent,
-    AddBoreholeComponent
+    AddBoreholeComponent,
+    AddBoreholeFundamentalDetailsComponent,
+    AddBoreholeRotarydrillDetailsComponent,
+    AddBoreholeCableDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +47,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    FormsModule,
+    MatSliderModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

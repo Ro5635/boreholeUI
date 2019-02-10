@@ -1,0 +1,43 @@
+<h2>Rotary Drill Details</h2>
+<p>Please complete the additional details for the rotary drill borehole</p>
+
+<br>
+
+<form [formGroup]="typeDetails">
+
+  <div class="typeDetails_singleInput">
+    <label for="DrillStrength">Drill Strength:</label>
+    <mat-slider
+      matInput
+      id="DrillStrength"
+      formControlName="DrillStrength"
+      name="DrillStrength"
+      class="rotaryDrillDetails_Slider"
+      thumbLabel
+      tickInterval="1"
+      min="1"
+      max="10"></mat-slider>
+  </div>
+
+
+  <div class="typeDetails_singleInput">
+    <mat-form-field>
+      <input matInput placeholder="Drill ID" name="DrillIDTextInput" formControlName="DrillID"
+             required>
+    </mat-form-field>
+  </div>
+
+
+  <div class="typeDetails_singleInput">
+    <mat-slide-toggle matInput>Raining During Borehole Excavation</mat-slide-toggle>
+  </div>
+
+</form>
+
+<div class="stepStage-navButtons">
+  <button type="button" mat-button matStepperPrevious>Back</button>
+  <button type="button" mat-button matStepperNext [disabled]="typeDetails.invalid" (click)="emitTypeDetails()">
+    Next
+  </button>
+
+</div>
