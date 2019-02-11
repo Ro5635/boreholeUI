@@ -2,3 +2,9 @@
   flex: 1 1 auto;
 }
 
+.primaryToolbar {
+  &_Links {
+    text-decoration: none;
+    color: white;
+  }
+}
