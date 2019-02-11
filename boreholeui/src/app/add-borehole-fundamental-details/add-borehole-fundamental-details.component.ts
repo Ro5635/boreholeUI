@@ -22,7 +22,7 @@ export class AddBoreholeFundamentalDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.fundamentalDetails = this._formBuilder.group({
-      ID: new FormControl('', Validators.required),
+      id: new FormControl('', Validators.required),
       Diameter: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")]),
       Depth: new FormControl('', [Validators.required, Validators.min(1), Validators.pattern("^[0-9]*$")]),
       Type: new FormControl('', [Validators.required]),

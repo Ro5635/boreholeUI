@@ -10,7 +10,6 @@ import {BoreholesService} from "../boreholes.service";
 export class AddBoreholeComponent implements OnInit {
   boreholeModel = new Borehole();
   currentBoreholeType: string;
-  tmpTestBoreholes: Borehole[];
 
   constructor(private boreholesService: BoreholesService) {
   }
@@ -32,10 +31,12 @@ export class AddBoreholeComponent implements OnInit {
   }
 
   saveBorehole() {
-    console.log(this.boreholeModel);
+    // Attempt to save the borehole
+    this.boreholesService.saveBorehole(this.boreholeModel);
 
-    this.boreholesService.getBoreholes()
-      .subscribe(acquiredBoreholes => this.tmpTestBoreholes = acquiredBoreholes);
+
+    // this.boreholesService.getBoreholes()
+    //   .subscribe(acquiredBoreholes => this.tmpTestBoreholes = acquiredBoreholes);
 
   }
 

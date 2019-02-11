@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {Borehole} from "../Borehole";
 import {tap, catchError} from "rxjs/operators";
@@ -10,7 +10,14 @@ import {tap, catchError} from "rxjs/operators";
 export class BoreholesService {
 
   // TODO: REPLACE FIXED URL
-  boreholeAPIURL = 'http://localhost:3300';
+  boreholeAPIURL = 'http://localhost:3300/boreholes';
+
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+      // 'Authorization': 'my-auth-token'
+    })
+  };
 
   constructor(private http: HttpClient) {
   }
@@ -37,7 +44,8 @@ export class BoreholesService {
 
   // CURRENTLY FIXED TO GET BOREHOLE WITH ID: GreenEggsAndHam
   getBoreholes(): Observable<Borehole[]> {
-    return this.http.get<Borehole[]>(this.boreholeAPIURL + '}/boreholes/GreenEggsAndHam')
+
+    return this.http.get<Borehole[]>(this.boreholeAPIURL + '/GreenEggsAndHam')
       .pipe(
         tap(() => {
           console.log(`fetched boreholes`);
@@ -45,6 +53,14 @@ export class BoreholesService {
         catchError(this.handleError('getBoreholes', []))
       );
 
+  }
+
+  saveBorehole(borehole: Borehole) {
+    const data = JSON.stringify({Boreholes: [borehole]});
+    return this.http.put(this.boreholeAPIURL, data, this.httpOptions).subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
   }
 
 }

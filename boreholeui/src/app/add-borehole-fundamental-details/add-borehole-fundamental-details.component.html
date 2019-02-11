@@ -6,9 +6,9 @@
   </p>
 
   <mat-form-field>
-    <input matInput placeholder="Borehole ID" name="IDTextInput" formControlName="ID" required>
+    <input matInput placeholder="Borehole ID" name="IDTextInput" formControlName="id" required>
   </mat-form-field>
-  <p *ngIf="fundamentalDetails.get('ID').invalid && fundamentalDetails.get('ID').touched">
+  <p *ngIf="fundamentalDetails.get('id').invalid && fundamentalDetails.get('id').touched">
     Please enter a valid ID.
   </p>
   <br>
