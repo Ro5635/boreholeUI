@@ -1,6 +1,5 @@
 <section class="addBorehole">
 
-
   <mat-horizontal-stepper [linear]="true">
     <mat-step [stepControl]="fundamentalDetailsStep">
 
@@ -10,8 +9,10 @@
 
     <mat-step [stepControl]="TypeSpecificDetails">
       <div [ngSwitch]="currentBoreholeType">
-        <app-add-borehole-rotarydrill-details *ngSwitchCase="'Rotarydrill'" (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-rotarydrill-details>
-        <app-add-borehole-cable-details *ngSwitchCase="'Cable'" (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-cable-details>
+        <app-add-borehole-rotarydrill-details *ngSwitchCase="'Rotarydrill'"
+                                              (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-rotarydrill-details>
+        <app-add-borehole-cable-details *ngSwitchCase="'Cable'"
+                                        (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-cable-details>
         <div *ngSwitchDefault>No Borehole type selected</div>
 
       </div>
@@ -26,7 +27,7 @@
       <br>
 
       <div class="addBorehole_stepStage-navButtons">
-        <button type="button" mat-button (click)="saveBorehole()">Save</button>
+        <button type="button" mat-button (click)="saveBorehole()" [disabled]="saveDisabled">Save</button>
         <button type="button" mat-button matStepperPrevious>Back</button>
       </div>
     </mat-step>

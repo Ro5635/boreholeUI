@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {Borehole} from "../../Borehole";
 import {BoreholesService} from "../boreholes.service";
+import {MatSnackBar} from "@angular/material";
+import {SnackbarNotificationComponent} from "../snackbar-notification/snackbar-notification.component";
 
 @Component({
   selector: 'app-add-borehole',
@@ -10,8 +13,10 @@ import {BoreholesService} from "../boreholes.service";
 export class AddBoreholeComponent implements OnInit {
   boreholeModel = new Borehole();
   currentBoreholeType: string;
+  saveDisabled: boolean = false;
 
-  constructor(private boreholesService: BoreholesService) {
+
+  constructor(private boreholesService: BoreholesService, public router: Router, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -32,12 +37,43 @@ export class AddBoreholeComponent implements OnInit {
 
   saveBorehole() {
     // Attempt to save the borehole
-    this.boreholesService.saveBorehole(this.boreholeModel);
+    this.saveDisabled = true;
 
+        this.boreholesService.saveBorehole(this.boreholeModel)
+      .subscribe(response => {
+
+        // Hacky deal with that I have not typed things properly
+        const serviceResponse: any = response;
+
+        if (serviceResponse.failedCreationBoreholes && serviceResponse.failedCreationBoreholes.length === 0) {
+          // Successfully created all boreholes
+          this.openSnackBar('Successfully Saved', 'Create Borehole');
+
+        } else{
+          // failed to create one or more submitted boreholes
+          this.openSnackBar('Failed to Save', 'Create Borehole');
+
+        }
+        this.saveDisabled = false;
+      });
+
+    // Take the user back to the home page
+    this.router.navigate(['/']);
 
     // this.boreholesService.getBoreholes()
     //   .subscribe(acquiredBoreholes => this.tmpTestBoreholes = acquiredBoreholes);
 
+  }
+
+  openSnackBar(message: string, action: string, duration: number = 2500) {
+    this.snackBar.open(message, action, {
+      "duration": duration
+    });
+
+    // Alternative method for loading via component, gives better customisation options.
+    // this.snackBar.openFromComponent(SnackbarNotificationComponent, {
+    //   duration: 2500
+    // });
   }
 
 }

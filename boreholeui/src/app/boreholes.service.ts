@@ -55,12 +55,15 @@ export class BoreholesService {
 
   }
 
-  saveBorehole(borehole: Borehole) {
+  saveBorehole(borehole: Borehole): Observable<object> {
     const data = JSON.stringify({Boreholes: [borehole]});
-    return this.http.put(this.boreholeAPIURL, data, this.httpOptions).subscribe(
-      response => console.log(response),
-      error => console.log(error)
-    );
+    return this.http.put(this.boreholeAPIURL, data, this.httpOptions)
+      .pipe(
+        tap(() => {
+          console.log(`Put Borehole`);
+        }),
+        catchError(this.handleError('saveBoreholes', {}))
+      );
   }
 
 }

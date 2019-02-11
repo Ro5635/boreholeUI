@@ -14,6 +14,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddBoreholeFundamentalDetailsComponent } from './add-borehole-fundamental-details/add-borehole-fundamental-details.component';
 import { AddBoreholeRotarydrillDetailsComponent } from './add-borehole-rotarydrill-details/add-borehole-rotarydrill-details.component';
 import { AddBoreholeCableDetailsComponent } from './add-borehole-cable-details/add-borehole-cable-details.component';
+import { SnackbarNotificationComponent } from './snackbar-notification/snackbar-notification.component';
 
 
 
@@ -34,7 +36,8 @@ import { AddBoreholeCableDetailsComponent } from './add-borehole-cable-details/a
     AddBoreholeComponent,
     AddBoreholeFundamentalDetailsComponent,
     AddBoreholeRotarydrillDetailsComponent,
-    AddBoreholeCableDetailsComponent
+    AddBoreholeCableDetailsComponent,
+    SnackbarNotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -52,9 +55,11 @@ import { AddBoreholeCableDetailsComponent } from './add-borehole-cable-details/a
     MatDividerModule,
     FormsModule,
     MatSliderModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SnackbarNotificationComponent]
 })
 export class AppModule { }
