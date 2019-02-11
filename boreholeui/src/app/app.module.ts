@@ -24,12 +24,14 @@ import { MainNavMenuComponent } from './main-nav-menu/main-nav-menu.component';
 import { AddBoreholeComponent } from './add-borehole/add-borehole.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AddBoreholeFundamentalDetailsComponent } from './add-borehole-fundamental-details/add-borehole-fundamental-details.component';
-import { AddBoreholeRotarydrillDetailsComponent } from './add-borehole-rotarydrill-details/add-borehole-rotarydrill-details.component';
-import { AddBoreholeCableDetailsComponent } from './add-borehole-cable-details/add-borehole-cable-details.component';
+import { AddBoreholeFundamentalDetailsComponent } from './boreholeCreationComponents/add-borehole-fundamental-details/add-borehole-fundamental-details.component';
+import { AddBoreholeRotarydrillDetailsComponent } from './boreholeCreationComponents/add-borehole-rotarydrill-details/add-borehole-rotarydrill-details.component';
+import { AddBoreholeCableDetailsComponent } from './boreholeCreationComponents/add-borehole-cable-details/add-borehole-cable-details.component';
 import { SnackbarNotificationComponent } from './snackbar-notification/snackbar-notification.component';
 import { SearchForBoreholeComponent } from './search-for-borehole/search-for-borehole.component';
-import { DisplayBoreholeComponent } from './display-borehole/display-borehole.component';
+import { DisplayBoreholeComponent } from './boreholeDisplayComponents/display-borehole/display-borehole.component';
+import { DisplayBoreholeRotarydrillComponent } from './boreholeDisplayComponents/display-borehole-rotarydrill/display-borehole-rotarydrill.component';
+import { DisplayBoreholeCableComponent } from './boreholeDisplayComponents/display-borehole-cable/display-borehole-cable.component';
 
 
 
@@ -43,7 +45,9 @@ import { DisplayBoreholeComponent } from './display-borehole/display-borehole.co
     AddBoreholeCableDetailsComponent,
     SnackbarNotificationComponent,
     SearchForBoreholeComponent,
-    DisplayBoreholeComponent
+    DisplayBoreholeComponent,
+    DisplayBoreholeRotarydrillComponent,
+    DisplayBoreholeCableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Borehole} from "../../Borehole";
+import {Borehole} from "../../../Borehole";
 import {MatSnackBar} from "@angular/material";
 
 @Component({

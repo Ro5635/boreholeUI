@@ -8,7 +8,18 @@
   <mat-card-content>
     <mat-chip-list>
       <mat-chip color="primary" selected>{{borehole.Type}}</mat-chip>
+      <mat-chip color="primary" selected>{{borehole.Depth}}M Deep</mat-chip>
     </mat-chip-list>
+
+    <div [ngSwitch]="borehole.Type">
+      <app-display-borehole-rotarydrill *ngSwitchCase="'Rotarydrill'" [borehole]="borehole"></app-display-borehole-rotarydrill>
+      <app-display-borehole-cable *ngSwitchCase="'Cable'" [borehole]="borehole"></app-display-borehole-cable>
+      <div *ngSwitchDefault></div>
+
+    </div>
+
+
+
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="sendSnackBarNotification('Not Implemented!', 'Error')">Edit</button>
