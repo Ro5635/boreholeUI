@@ -7,10 +7,18 @@
       <input matInput placeholder="Borehole ID" name="id" formControlName="id" value="">
     </mat-form-field>
     <button mat-raised-button color="primary" [disabled]="boreholeSearchForm.invalid"
-            (click)="searchForBorehole(boreholeSearchForm.value.id)" class="searchButton">Search
+            (click)="getBorehole(boreholeSearchForm.value.id)" class="searchButton">Search
     </button>
 
   </form>
 
+  <div class="boreholeDisplay">
+
+    <app-display-borehole *ngIf="retrievedBorehole?.id" [borehole]="retrievedBorehole"
+                          class="boreholeDisplay-borehole"></app-display-borehole>
+  </div>
+
 </section>
+
+
 

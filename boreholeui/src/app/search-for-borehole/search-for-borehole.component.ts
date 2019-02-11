@@ -10,7 +10,7 @@ import {Borehole} from "../../Borehole";
 })
 export class SearchForBoreholeComponent implements OnInit {
   boreholeSearchForm: FormGroup;
-  retrievedBoreholes: Borehole[];
+  retrievedBorehole: Borehole;
 
   constructor(private _formBuilder: FormBuilder, private boreholesService: BoreholesService) {
   }
@@ -21,21 +21,28 @@ export class SearchForBoreholeComponent implements OnInit {
     });
   }
 
-  searchForBorehole(boreholeID: string) {
+
+  getBorehole(boreholeID: string) {
     console.log(`Calling service to search for ID: ${boreholeID}`);
 
-    this.boreholesService.getBoreholes()
-      .subscribe(acquiredBoreholes => {
-        if (acquiredBoreholes.length > 0) {
+    this.boreholesService.getBorehole(boreholeID)
+      .subscribe(acquiredBorehole => {
+        // I can only say that this API design is a fail
+        // glad I played around with this away from a live project. :D
+        // jump the borehole into a intermediate variable for clarity, the API returns an object where the
+        // target borehole sits under the requested key name.
+        const borehole = acquiredBorehole[boreholeID];
+        if (borehole.id) {
           // Acquired boreholes
-          this.retrievedBoreholes = acquiredBoreholes
+          this.retrievedBorehole = borehole
         } else {
           // No borehole retrieved
-          this.retrievedBoreholes = [];
+          this.retrievedBorehole = new Borehole();
 
         }
       });
 
   }
+
 
 }

@@ -42,18 +42,18 @@ export class BoreholesService {
     };
   }
 
-  // CURRENTLY FIXED TO GET BOREHOLE WITH ID: GreenEggsAndHam
-  getBoreholes(): Observable<Borehole[]> {
 
-    return this.http.get<Borehole[]>(this.boreholeAPIURL + '/GreenEggsAndHam')
+  getBorehole(boreholeID): Observable<Borehole> {
+    return this.http.get<Borehole>(`${this.boreholeAPIURL}/${boreholeID}`)
       .pipe(
         tap(() => {
-          console.log(`fetched boreholes`);
+          console.log(`fetched borehole`);
         }),
-        catchError(this.handleError('getBoreholes', []))
+        catchError(this.handleError('getBorehole', new Borehole()))
       );
 
   }
+
 
   saveBorehole(borehole: Borehole): Observable<object> {
     const data = JSON.stringify({Boreholes: [borehole]});
