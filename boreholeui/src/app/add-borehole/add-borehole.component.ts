@@ -60,9 +60,6 @@ export class AddBoreholeComponent implements OnInit {
     // Take the user back to the home page
     this.router.navigate(['/']);
 
-    // this.boreholesService.getBoreholes()
-    //   .subscribe(acquiredBoreholes => this.tmpTestBoreholes = acquiredBoreholes);
-
   }
 
   openSnackBar(message: string, action: string, duration: number = 2500) {

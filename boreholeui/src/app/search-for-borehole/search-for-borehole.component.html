@@ -1,0 +1,16 @@
+<section class="ContentWrapper">
+  <h2>Search for a Borehole</h2>
+  <p>Enter the ID of the borehole that you wish to view below</p>
+
+  <form class="boreholeSearchForm" [formGroup]="boreholeSearchForm">
+    <mat-form-field class="">
+      <input matInput placeholder="Borehole ID" name="id" formControlName="id" value="">
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="boreholeSearchForm.invalid"
+            (click)="searchForBorehole(boreholeSearchForm.value.id)" class="searchButton">Search
+    </button>
+
+  </form>
+
+</section>
+

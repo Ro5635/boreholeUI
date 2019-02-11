@@ -26,6 +26,7 @@ import { AddBoreholeFundamentalDetailsComponent } from './add-borehole-fundament
 import { AddBoreholeRotarydrillDetailsComponent } from './add-borehole-rotarydrill-details/add-borehole-rotarydrill-details.component';
 import { AddBoreholeCableDetailsComponent } from './add-borehole-cable-details/add-borehole-cable-details.component';
 import { SnackbarNotificationComponent } from './snackbar-notification/snackbar-notification.component';
+import { SearchForBoreholeComponent } from './search-for-borehole/search-for-borehole.component';
 
 
 
@@ -37,7 +38,8 @@ import { SnackbarNotificationComponent } from './snackbar-notification/snackbar-
     AddBoreholeFundamentalDetailsComponent,
     AddBoreholeRotarydrillDetailsComponent,
     AddBoreholeCableDetailsComponent,
-    SnackbarNotificationComponent
+    SnackbarNotificationComponent,
+    SearchForBoreholeComponent
   ],
   imports: [
     BrowserModule,
