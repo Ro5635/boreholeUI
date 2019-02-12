@@ -2,13 +2,13 @@
   <h2>Add a new Borehole</h2>
 
   <mat-horizontal-stepper [linear]="true">
-    <mat-step [stepControl]="fundamentalDetailsStep">
+    <mat-step>
 
       <app-add-borehole-fundamental-details
         (boreholeFundamentalDetails)="completeFundamentalDetails($event)"></app-add-borehole-fundamental-details>
     </mat-step>
 
-    <mat-step [stepControl]="TypeSpecificDetails">
+    <mat-step>
       <div [ngSwitch]="currentBoreholeType">
         <app-add-borehole-rotarydrill-details *ngSwitchCase="'Rotarydrill'"
                                               (boreholeTypeDetails)="completeTypeDetails($event)"></app-add-borehole-rotarydrill-details>
